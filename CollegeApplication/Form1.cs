@@ -2,6 +2,7 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Drawing;
 
 
 namespace CollegeApplication
@@ -17,6 +18,7 @@ namespace CollegeApplication
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.BackColor = Color.Teal;
             LoadColleges();
             LoadDepartments();
             textBox1.TextChanged += textBox1_TextChanged;
@@ -364,6 +366,65 @@ namespace CollegeApplication
             {
                 LoadDepartments(); // Show all if empty
             }
+        }
+
+        private void COLLEGEAddbtn_MouseHover(object sender, EventArgs e)
+        {
+            COLLEGEAddbtn.BackColor = Color.LightGreen;
+        }
+
+        private void COLLEGEEditbtn_MouseHover(object sender, EventArgs e)
+        {
+            COLLEGEEditbtn.BackColor = Color.LightGreen;
+        }
+
+        private void COLLEGEDeletebtn_MouseHover(object sender, EventArgs e)
+        {
+            COLLEGEDeletebtn.BackColor = Color.LightGreen;
+        }
+
+        private void DEPARTMENTADDbtn_MouseHover(object sender, EventArgs e)
+        {
+            DEPARTMENTADDbtn.BackColor = Color.LightGreen;
+        }
+
+        private void DEPARTMENTEDITbtn_MouseHover(object sender, EventArgs e)
+        {
+            DEPARTMENTEDITbtn.BackColor = Color.LightGreen;
+        }
+
+        private void DEPARTMENTDELETEbtn_MouseHover(object sender, EventArgs e)
+        {
+            DEPARTMENTDELETEbtn.BackColor = Color.LightGreen;
+        }
+
+        private void COLLEGEAddbtn_MouseLeave(object sender, EventArgs e)
+        {
+            COLLEGEAddbtn.BackColor = SystemColors.Control;
+        }
+        private void COLLEGEEditbtn_MouseLeave(object sender, EventArgs e)
+        {
+            COLLEGEEditbtn.BackColor = SystemColors.Control; // Default button color
+        }
+
+        private void COLLEGEDeletebtn_MouseLeave(object sender, EventArgs e)
+        {
+            COLLEGEDeletebtn.BackColor = SystemColors.Control;
+        }
+
+        private void DEPARTMENTADDbtn_MouseLeave(object sender, EventArgs e)
+        {
+            DEPARTMENTADDbtn.BackColor = SystemColors.Control;
+        }
+
+        private void DEPARTMENTEDITbtn_MouseLeave(object sender, EventArgs e)
+        {
+            DEPARTMENTEDITbtn.BackColor = SystemColors.Control;
+        }
+
+        private void DEPARTMENTDELETEbtn_MouseLeave(object sender, EventArgs e)
+        {
+            DEPARTMENTDELETEbtn.BackColor = SystemColors.Control;
         }
 
     }
