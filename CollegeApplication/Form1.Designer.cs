@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.COLLEGENAMEtxt = new System.Windows.Forms.TextBox();
             this.COLLEGECODEtxt = new System.Windows.Forms.TextBox();
             this.lbl1 = new System.Windows.Forms.Label();
@@ -52,6 +53,8 @@
             this.COLLEGEIDtxt = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.COLLEGEdgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DEPARTMENTdgv)).BeginInit();
             this.SuspendLayout();
@@ -298,12 +301,26 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "COLLEGE ID";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(394, 507);
+            this.progressBar1.MarqueeAnimationSpeed = 999;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(619, 31);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 6;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1308, 1050);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.DEPARTEMNTisActivecb);
             this.Controls.Add(this.COLLEGEisActivecb);
             this.Controls.Add(this.DEPARTMENTDELETEbtn);
@@ -364,6 +381,8 @@
         private System.Windows.Forms.TextBox COLLEGEIDtxt;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

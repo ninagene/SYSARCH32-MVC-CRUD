@@ -1,0 +1,12 @@
+# Ignore Visual Studio-specific files
+.vs/
+*.user
+*.suo
+
+# Ignore build and debug files
+bin/
+obj/
+*.exe
+*.pdb
+*.cache
+*.json

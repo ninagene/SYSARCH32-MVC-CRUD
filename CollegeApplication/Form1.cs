@@ -2,6 +2,7 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace CollegeApplication
@@ -17,15 +18,21 @@ namespace CollegeApplication
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadColleges();
-            LoadDepartments();
+            //LoadColleges();
+            //LoadDepartments();
             textBox1.TextChanged += textBox1_TextChanged;
+            progressBar1.Visible = true;  // Show the progress bar
+            timer1.Start();  // Wait a moment before running the database queries
 
         }
         private void LoadColleges()
         {
             try
             {
+                // Show the progress bar before loading
+                progressBar1.Visible = true;
+                Application.DoEvents(); // Forces UI to refresh before running the database query
+
                 using (MySqlConnection con = new MySqlConnection(connectionString))
                 {
                     con.Open();
@@ -39,25 +46,47 @@ namespace CollegeApplication
             {
                 MessageBox.Show("Error loading colleges: " + ex.Message);
             }
+            finally
+            {
+                // Hide the progress bar after loading
+                progressBar1.Visible = false;
+            }
         }
 
         private void LoadDepartments()
+
         {
-            using (MySqlConnection con = new MySqlConnection(connectionString))
+            try
             {
-                con.Open();
-                string query = @"
+                // Show the progress bar before loading
+                progressBar1.Visible = true;
+                Application.DoEvents(); // Forces UI to refresh before running the database query
+
+                using (MySqlConnection con = new MySqlConnection(connectionString))
+                {
+                    con.Open();
+                    string query = @"
             SELECT d.DepartmentID, d.DepartmentName, d.DepartmentCode, d.IsActive, 
                    d.CollegeID, c.CollegeName, c.CollegeCode 
             FROM Departments d
             LEFT JOIN Colleges c ON d.CollegeID = c.CollegeID";
 
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, con))
-                {
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    DEPARTMENTdgv.DataSource = dt;
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, con))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        DEPARTMENTdgv.DataSource = dt;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading departments: " + ex.Message);
+            }
+            finally
+            {
+                // Hide the progress bar after loading
+                progressBar1.Visible = false; 
             }
         }
 
@@ -366,5 +395,11 @@ namespace CollegeApplication
             }
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();  // Stop the timer after it runs once
+            LoadColleges();
+            LoadDepartments();
+        }
     }
 }
