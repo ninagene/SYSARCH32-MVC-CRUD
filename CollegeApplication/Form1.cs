@@ -86,7 +86,7 @@ namespace CollegeApplication
             finally
             {
                 // Hide the progress bar after loading
-                progressBar1.Visible = false; 
+                progressBar1.Visible = false;
             }
         }
 
